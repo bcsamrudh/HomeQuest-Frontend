@@ -41,8 +41,6 @@ import { VscSignIn } from "react-icons/vsc"
       </div>
     </MenubarTrigger>
     <MenubarContent forceMount>
-      <MenubarItem inset>Manage your Account</MenubarItem>
-      <MenubarSeparator />
       <MenubarItem inset className="text-red-500">
         <VscSignIn className="mr-2 h-4 w-4" />
         Log Out

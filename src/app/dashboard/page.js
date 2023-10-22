@@ -1,7 +1,10 @@
+'use client'
 import { PlusCircledIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+// import Filter from "@/components/filter"
 import { Separator } from "@/components/ui/separator"
+import SearchBar from '@/components/searchbar'
 import {
     Tabs,
     TabsContent,
@@ -14,6 +17,7 @@ import { Menu } from "@/components/menu"
 import { EmptyPlaceholder } from "@/components/empty-placeholder"
 import { Sidebar } from "@/components/sidebar"
 
+const options = ["Price","Great","Good"]
 
 export default function MusicPage() {
   return (
@@ -44,6 +48,12 @@ export default function MusicPage() {
             </div>
               <div className="col-span-3 lg:col-span-4 lg:border-l">
                 <div className="h-full px-4 py-6 lg:px-8">
+                <div className="pb-4">
+                <div className="flex space-x-4">
+                  <SearchBar />
+                  {/* <Filter propertyTypes={options}/> */}
+                </div>
+                </div>
                   <Tabs defaultValue="music" className="h-full space-y-6">
                     <div className="space-between flex items-center">
                     <TabsList>
