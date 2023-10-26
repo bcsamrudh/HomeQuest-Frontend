@@ -1,25 +1,28 @@
 'use client'
-import { PlusCircledIcon } from "@radix-ui/react-icons"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
-// import Filter from "@/components/filter"
-import { Separator } from "@/components/ui/separator"
-import SearchBar from '@/components/searchbar'
-import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-  } from "@/components/ui/tabs"
-
-import { HomesArtwork } from "@/components/homes-artwork"
 import { Menu } from "@/components/menu"
-import { EmptyPlaceholder } from "@/components/empty-placeholder"
-import { Sidebar } from "@/components/sidebar"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { FaCalculator } from "react-icons/fa";
+import { IoHome } from "react-icons/io5";
+import { MdCompare } from "react-icons/md";
+import { AiFillHeart } from "react-icons/ai";
+import { TbRulerMeasure } from "react-icons/tb";
+import { useState } from 'react';
+import PropertyList from "@/components/property-list"
+import { EmptyPlaceholder } from "@/components/empty-placeholder";
+import MortgageCalculator from "@/components/mortgage-calc";
 
-const options = ["Price","Great","Good"]
 
-export default function MusicPage() {
+export default function HomePage() {
+  const [activeButton, setActiveButton] = useState(1);
+  const [activeComponent, setActiveComponent] = useState(<PropertyList/>);
+
+  const handleButtonClick = (buttonId,component) => {
+    setActiveButton(buttonId);
+    setActiveComponent(component)
+  };
+
   return (
     <>
       <div className="md:hidden">
@@ -44,57 +47,44 @@ export default function MusicPage() {
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
             <div className="flex h-screen">
-              <Sidebar className="hidden lg:block h-screen"/>
-            </div>
-              <div className="col-span-3 lg:col-span-4 lg:border-l">
-                <div className="h-full px-4 py-6 lg:px-8">
-                <div className="pb-4">
-                <div className="flex space-x-4">
-                  <SearchBar />
-                  {/* <Filter propertyTypes={options}/> */}
-                </div>
-                </div>
-                  <Tabs defaultValue="music" className="h-full space-y-6">
-                    <div className="space-between flex items-center">
-                    <TabsList>
-                        <TabsTrigger value="nearby" className="relative">
-                          Nearby
-                        </TabsTrigger>
-                        <TabsTrigger value="popular">Popular</TabsTrigger>
-                        <TabsTrigger value="recommended">
-                           Recommended
-                        </TabsTrigger>
-                      </TabsList>
-                      <div className="ml-auto mr-4">
-                        <Button>
-                          <PlusCircledIcon className="mr-2 h-4 w-4" />
-                          Add Property
-                        </Button>
-                      </div>
+              <div className={cn("pb-12", "hidden lg:block h-screen", "h-screen flex flex-col")} style={{ background: 'linear-gradient(64deg, #69B7FF -26.63%, #FFF 100%)' }}>
+                <div className="space-y-4 py-4">
+                  <div className="px-3 py-2 flex-1">
+                    <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+                      Dashboard
+                    </h2>
+                    <div className="space-y-1">
+                      <Button variant={activeButton === 1 ? "secondary" : "ghost"} className="w-full justify-start"
+                      onClick={() => handleButtonClick(1,<PropertyList/>)}>
+                        <IoHome className="mr-2 h-4 w-4" />
+                        Discover Properties
+                      </Button>
+                      <Button variant={activeButton === 2 ? "secondary" : "ghost"}  className="w-full justify-start"
+                      onClick={() => handleButtonClick(2,<MortgageCalculator/>)}>
+                        <FaCalculator className="mr-2 h-4 w-4" />
+                        Mortgage Calculator
+                      </Button>
+                      <Button variant={activeButton === 3 ? "secondary" : "ghost"}  className="w-full justify-start"
+                      onClick={() => handleButtonClick(3,<EmptyPlaceholder/>)}>
+                        <MdCompare className="mr-2 h-4 w-4" />
+                        Compare Properties
+                      </Button>
+                      <Button variant={activeButton === 4 ? "secondary" : "ghost"}  className="w-full justify-start "
+                      onClick={() => handleButtonClick(4,<EmptyPlaceholder/>)}>
+                        <TbRulerMeasure className="mr-2 h-4 w-4" />
+                        Evaluate a Property
+                      </Button>
+                      <Button variant={activeButton === 5 ? "secondary" : "ghost"}  className="w-full justify-start "
+                      onClick={() => handleButtonClick(5,<EmptyPlaceholder/>)}>
+                        <AiFillHeart className="mr-2 h-4 w-4" />
+                        My Favourites
+                      </Button>
                     </div>
-                    <TabsContent
-                      value="nearby"
-                      className="border-none p-0 outline-none"
-                    >
-                     <EmptyPlaceholder />
-                    </TabsContent>
-                    <TabsContent
-                      value="popular"
-                      className="h-full flex-col border-none p-0 data-[state=active]:flex"
-                    >
-                    <EmptyPlaceholder />
-                    </TabsContent>
-                    <TabsContent
-                      value="recommended"
-                      className="h-full flex-col border-none p-0 data-[state=active]:flex"
-                    >
-                      <EmptyPlaceholder />
-                      <Separator className="my-4" />
-                      <EmptyPlaceholder />
-                    </TabsContent>
-                  </Tabs>
+                  </div>
                 </div>
               </div>
+            </div>
+            {activeComponent}
             </div>
           </div>
         </div>

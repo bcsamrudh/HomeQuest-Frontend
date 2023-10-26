@@ -61,7 +61,7 @@ export default function Home() {
       </div>
       <div className=" w-2/3 h-screen flex flex-col justify-center items-center">
         <div className="p-7">
-        <Label className="text-3xl font-bold">HomeQuest</Label>
+        <Label className="text-3xl font-bold" style={{ fontFamily: 'cursive' }}>HomeQuest</Label>
         </div>
       <div className=" w-2/3 h-screen flex flex-col justify-center items-center">  
       <Tabs defaultValue="account" className="w-[400px]">

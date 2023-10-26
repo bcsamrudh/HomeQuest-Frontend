@@ -1,14 +1,10 @@
 import {
     Menubar,
-    MenubarCheckboxItem,
     MenubarContent,
     MenubarItem,
     MenubarMenu,
     MenubarSeparator,
     MenubarShortcut,
-    MenubarSub,
-    MenubarSubContent,
-    MenubarSubTrigger,
     MenubarTrigger,
   } from "@/components/ui/menubar"
 import { VscSignIn } from "react-icons/vsc"
@@ -33,20 +29,20 @@ import { VscSignIn } from "react-icons/vsc"
     </MenubarContent>
   </MenubarMenu>
   <MenubarMenu>
-    <MenubarTrigger className="hidden md:flex items-center justify-between ms-auto">
-      <div className="flex items-center">
-        <div className="h-6 w-6 rounded-full flex items-center justify-center text-white">
-        </div>
-        <span className="ml-2">B C Samrudh</span>
+  <MenubarTrigger className="hidden md:flex items-center justify-between ms-auto">
+    <div className="flex items-center">
+      <div className="h-6 w-6 rounded-full flex items-center justify-center text-white">
       </div>
-    </MenubarTrigger>
-    <MenubarContent forceMount>
-      <MenubarItem inset className="text-red-500">
-        <VscSignIn className="mr-2 h-4 w-4" />
-        Log Out
-      </MenubarItem>
-    </MenubarContent>
-  </MenubarMenu>
+      <span className="ml-auto">B C Samrudh</span>
+    </div>
+  </MenubarTrigger>
+  <MenubarContent forceMount>
+    <MenubarItem inset className="text-red-500">
+      <VscSignIn className="mr-2 h-4 w-4" />
+      Log Out
+    </MenubarItem>
+  </MenubarContent>
+</MenubarMenu>
 </Menubar>
     )
   }
