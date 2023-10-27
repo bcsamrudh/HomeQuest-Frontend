@@ -20,14 +20,7 @@ import { VscSignIn } from "react-icons/vsc"
       <MenubarShortcut />
       <MenubarItem>Go To HomePage</MenubarItem>
     </MenubarContent>
-  </MenubarMenu>
-  <MenubarMenu>
-    <MenubarTrigger>Theme</MenubarTrigger>
-    <MenubarContent>
-      <MenubarItem inset>Dark</MenubarItem>
-      <MenubarItem inset>Light</MenubarItem>
-    </MenubarContent>
-  </MenubarMenu>
+  </MenubarMenu>  
   <MenubarMenu>
   <MenubarTrigger className="hidden md:flex items-center justify-between ms-auto">
     <div className="flex items-center">
@@ -37,7 +30,7 @@ import { VscSignIn } from "react-icons/vsc"
     </div>
   </MenubarTrigger>
   <MenubarContent forceMount>
-    <MenubarItem inset className="text-red-500">
+    <MenubarItem inset className="text-red-500" onClick={() => window.location.href = "./auth"}>
       <VscSignIn className="mr-2 h-4 w-4" />
       Log Out
     </MenubarItem>
