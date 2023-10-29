@@ -47,8 +47,6 @@ export default function PropertyList(){
               className="h-full flex-col border-none p-0 data-[state=active]:flex"
             >
               <EmptyPlaceholder />
-              <Separator className="my-4" />
-              <EmptyPlaceholder />
             </TabsContent>
           </Tabs>
         </div>

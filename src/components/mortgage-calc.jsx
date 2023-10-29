@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { PieChart } from 'react-minimal-pie-chart';
 
 const MortgageCalculator = () => {
   const [loanAmount, setLoanAmount] = useState('');
@@ -15,7 +16,7 @@ const MortgageCalculator = () => {
       setError('Please fill in all fields');
       return;
     }
-
+  
     const P = parseFloat(loanAmount);
     const annualRate = parseFloat(interestRate) / 100;
     const n = parseFloat(loanTerm) * 12;
@@ -31,12 +32,13 @@ const MortgageCalculator = () => {
   };
 
   return (
-    <div>
-        <div className="p-4">
+    <>
+    <div className='flex h-screen items-center justify-center'>
+    <h1 className="text-2xl font-semibold mb-4">Mortgage Calculator</h1>
+     <div className="p-4 w-1/2">
         {error && (
           <div className="text-red-500">{error}</div>
         )}
-      <h1 className="text-2xl font-semibold mb-4">Mortgage Calculator</h1>
       <div className="space-y-4">
         <input
           type="text"
@@ -69,7 +71,13 @@ const MortgageCalculator = () => {
         )}
       </div>
       </div>
-      </div>
+        <div className="w-1/2">
+          <PieChart data={[ { title: 'Principal', value: parseFloat(totalPayment), color: '#E38627' },
+                        { title: 'Interest', value: parseFloat(totalInterest), color: '#C13C37' },
+                    ]} />
+        </div>
+        </div>
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image"
 import { Menu } from "@/components/menu"
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,8 @@ import { useState } from 'react';
 import PropertyList from "@/components/property-list"
 import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import MortgageCalculator from "@/components/mortgage-calc";
+import Compare from "@/components/compare";
+import {UserNav} from "@/components/ui/menubar";
 
 
 export default function HomePage() {
@@ -20,34 +21,25 @@ export default function HomePage() {
 
   const handleButtonClick = (buttonId,component) => {
     setActiveButton(buttonId);
-    setActiveComponent(component)
+    setActiveComponent(component);
   };
 
   return (
     <>
       <div className="md:hidden">
-        <Image
-          src="/examples/music-light.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/music-dark.png"
-          width={1280}
-          height={1114}
-          alt="Music"
-          className="hidden dark:block"
-        />
       </div>
       <div className="hidden md:block">
-        <Menu />
+        <div className="flex h-16 items-center px-4">
+          <Menu />
+          <div className="ml-auto flex items-center space-x-4">
+              <UserNav />
+          </div>
+        </div>
         <div className="border-t">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
             <div className="flex h-screen">
-              <div className={cn("pb-12", "hidden lg:block h-screen", "h-screen flex flex-col")} style={{ background: 'linear-gradient(64deg, #69B7FF -26.63%, #FFF 100%)' }}>
+              <div className={cn("pb-12", "hidden lg:block h-screen", "h-screen flex flex-col")}>
                 <div className="space-y-4 py-4">
                   <div className="px-3 py-2 flex-1">
                     <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
@@ -65,7 +57,7 @@ export default function HomePage() {
                         Mortgage Calculator
                       </Button>
                       <Button variant={activeButton === 3 ? "secondary" : "ghost"}  className="w-full justify-start"
-                      onClick={() => handleButtonClick(3,<EmptyPlaceholder/>)}>
+                      onClick={() => handleButtonClick(3,<Compare/>)}>
                         <MdCompare className="mr-2 h-4 w-4" />
                         Compare Properties
                       </Button>
