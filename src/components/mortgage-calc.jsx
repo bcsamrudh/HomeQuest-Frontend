@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { PieChart } from 'react-minimal-pie-chart';
 
 const MortgageCalculator = () => {
   const [loanAmount, setLoanAmount] = useState('');
@@ -72,9 +71,6 @@ const MortgageCalculator = () => {
       </div>
       </div>
         <div className="w-1/2">
-          <PieChart data={[ { title: 'Principal', value: parseFloat(totalPayment), color: '#E38627' },
-                        { title: 'Interest', value: parseFloat(totalInterest), color: '#C13C37' },
-                    ]} />
         </div>
         </div>
     </>
