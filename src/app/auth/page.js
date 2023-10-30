@@ -70,7 +70,9 @@ export default function Home() {
         <TabsTrigger value="password">Login</TabsTrigger>
       </TabsList>
       <TabsContent value="account">
+      <form className='flex flex-col gap-4'> 
         <Register/>
+      </form>
       </TabsContent>
       <TabsContent value="password">
         <Login/>

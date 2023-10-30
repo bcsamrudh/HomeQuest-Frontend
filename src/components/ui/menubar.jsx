@@ -7,13 +7,17 @@ import {
 import { VscSignIn } from "react-icons/vsc"
 
 export function UserNav() {
+  const currentUser = null
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="flex items-center">
              <div className="h-6 w-6 rounded-full flex items-center justify-center text-white">
         </div>
-        <span className="ml-auto">B C Samrudh</span>
+        {currentUser?
+        <span className="ml-auto">{currentUser.username}</span>:
+        <span className="ml-auto">Guest</span>
+        }
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
