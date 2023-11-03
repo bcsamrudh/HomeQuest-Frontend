@@ -8,11 +8,7 @@ import { VscSignIn } from "react-icons/vsc";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  updateUserStart,
-  updateUserSuccess,
-  updateUserFailure,
   deleteUserFailure,
-  deleteUserStart,
   deleteUserSuccess,
   signOutUserStart,
 } from 'src/redux/user/userSlice';
@@ -61,8 +57,7 @@ export function UserNav() {
           <DropdownMenuItem className="text-red-500" onClick={handleSignOut}>
           <VscSignIn className="mr-2 h-4 w-4" />
             Log out
-          </DropdownMenuItem>:
-        <></>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </>}
     </DropdownMenu>

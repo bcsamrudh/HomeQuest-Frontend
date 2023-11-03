@@ -1,7 +1,6 @@
 'use client'
 import { PlusCircledIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import SearchBar from '@/components/searchbar'
 import {
     Tabs,

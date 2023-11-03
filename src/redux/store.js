@@ -9,6 +9,7 @@ const persistConfig = {
   key: 'root',
   storage,
   version: 1,
+  blacklist: [], // Add any reducer names you want to exclude from persistence
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -22,3 +23,4 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
