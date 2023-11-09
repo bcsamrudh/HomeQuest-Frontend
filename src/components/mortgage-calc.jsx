@@ -1,80 +1,118 @@
+'use client'
+import 'src/app/globals.css';
 import { useState } from 'react';
-import { Button } from "@/components/ui/button";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+import { Label } from '@/components/ui/label';
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { EmptyPlaceholder } from './empty-placeholder';
 
-const MortgageCalculator = () => {
-  const [loanAmount, setLoanAmount] = useState('');
-  const [interestRate, setInterestRate] = useState('');
-  const [loanTerm, setLoanTerm] = useState('');
-  const [monthlyPayment, setMonthlyPayment] = useState(null);
-  const [totalPayment, setTotalPayment] = useState(null);
-  const [totalInterest, setTotalInterest] = useState(null);
-  const [error, setError] = useState('');
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-  const calculateMortgage = () => {
-    if (!loanAmount || !interestRate || !loanTerm) {
-      setError('Please fill in all fields');
-      return;
+//the component of this file
+function MortgageCalculatorForm() {
+    
+    //initial/ setting state
+    const [homeValue, setHomeValue] = useState(400000);
+    const [downPayment, setDownPayment] = useState(80000);
+    const [interestRate, setInterestRate] = useState(2.12);
+    const [loanTerm, setLoanTerm] = useState(30);
+    const [pDisplay, setParaDisplay] = useState(1202.08);
+    
+    //some new variables to make formula writing easier further
+    const monthlyInterestRate = interestRate / 1200;
+    const months = loanTerm * 12;
+    const power = Math.pow((1 + monthlyInterestRate), months);
+    const principal = homeValue - downPayment;
+    const mortgagePayment = (principal * monthlyInterestRate * power) / (power - 1);
+    
+    //button action, mainly to update the mortgage payment (monthly)
+    const handleClick = (event) => { 
+        event.preventDefault();
+        setParaDisplay(mortgagePayment.toFixed(2));
+    }
+
+    //more intermediate value storing
+    const monthlyPrincipal = (homeValue - downPayment) / (12 * loanTerm);
+    const monthlyInterest = mortgagePayment - monthlyPrincipal;
+    
+    //data and options for the chart
+    const data = {
+        labels: ['principal', 'interest'],
+        datasets: [{
+          label: 'amount',
+          data: [monthlyPrincipal, monthlyInterest],
+          backgroundColor: ['black', 'red'],
+          borderColor: ['white', 'white'],
+        }]
     }
   
-    const P = parseFloat(loanAmount);
-    const annualRate = parseFloat(interestRate) / 100;
-    const n = parseFloat(loanTerm) * 12;
-    const i = annualRate / 12;
+    return (
+        <div className="col-span-3 lg:col-span-4 lg:border-l">
+        <div className="h-full px-4 py-6 lg:px-8">
+        <label className='text-2xl font-bold'>Mortgage Calculator</label>
+        <div className="pb-4">
+        <div className='mortgage-calculator'>
+            <div className='mortgage-form'>
+                <form>
+                    <label>Home value: </label>
+                    <input 
+                        type="number" 
+                        id="home-value" 
+                        required
+                        value={ homeValue }
+                        onChange={(event) => setHomeValue(event.target.value)}
+                    />
 
-    const monthlyPayment =
-      (P * i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
+                    <label>Down payment: </label>
+                    <input 
+                        type="number" 
+                        id="down-payment" 
+                        required
+                        value={ downPayment }
+                        onChange={(event) => setDownPayment(event.target.value)}
+                    />
 
-    setMonthlyPayment(monthlyPayment.toFixed(2));
-    setTotalPayment((monthlyPayment * n).toFixed(2));
-    setTotalInterest((monthlyPayment * n - P).toFixed(2));
-    setError('');
-  };
+                    <label>Interest rate: </label>
+                    <input 
+                        type="number" 
+                        id="interest-rate" 
+                        required
+                        value={ interestRate }
+                        onChange={(event) => setInterestRate(event.target.value)}
+                    />
 
-  return (
-    <>
-    <div className='flex h-screen items-center justify-center'>
-    <h1 className="text-2xl font-semibold mb-4">Mortgage Calculator</h1>
-     <div className="p-4 w-1/2">
-        {error && (
-          <div className="text-red-500">{error}</div>
-        )}
-      <div className="space-y-4">
-        <input
-          type="text"
-          placeholder="Loan Amount ($)"
-          value={loanAmount}
-          onChange={(e) => setLoanAmount(e.target.value)}
-          className="border p-2 rounded"
-        />
-        <input
-          type="text"
-          placeholder="Interest Rate (%)"
-          value={interestRate}
-          onChange={(e) => setInterestRate(e.target.value)}
-          className="border p-2 rounded"
-        />
-        <input
-          type="text"
-          placeholder="Loan Term (years)"
-          value={loanTerm}
-          onChange={(e) => setLoanTerm(e.target.value)}
-          className="border p-2 rounded"
-        />
-       <Button onClick={calculateMortgage}>Calculate</Button>
-        {monthlyPayment && (
-          <div className="space-y-2">
-            <p>Monthly Payment: ${monthlyPayment}</p>
-            <p>Total Payment: ${totalPayment}</p>
-            <p>Total Interest Paid: ${totalInterest}</p>
-          </div>
-        )}
-      </div>
-      </div>
-        <div className="w-1/2">
+                    <label>Loan term (years): </label>
+                    <input 
+                        type="number" 
+                        id="loan-term" 
+                        required
+                        value={ loanTerm }
+                        onChange={(event) => setLoanTerm(event.target.value)}
+                    />
+                    
+                    <button onClick={ handleClick }>Show mortgage details</button>
+                </form>
+            </div>
+            <div className='display-container'>
+                <div className='mortgage-display'>
+                    <p>Your monthly mortgage:</p>
+                    <p id='mortgage-value'>{ pDisplay }</p>
+                    <div className='mortgage-chart'>
+                        <Doughnut 
+                            data = { data }
+                            options = { {}}
+                        />
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
         </div>
-    </>
-  );
-};
+        </div>
+        
+    )
+}
 
-export default MortgageCalculator;
+export default MortgageCalculatorForm;
