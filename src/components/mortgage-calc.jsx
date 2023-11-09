@@ -14,11 +14,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 function MortgageCalculatorForm() {
     
     //initial/ setting state
-    const [homeValue, setHomeValue] = useState(400000);
-    const [downPayment, setDownPayment] = useState(80000);
-    const [interestRate, setInterestRate] = useState(2.12);
-    const [loanTerm, setLoanTerm] = useState(30);
-    const [pDisplay, setParaDisplay] = useState(1202.08);
+    const [homeValue, setHomeValue] = useState(null);
+    const [downPayment, setDownPayment] = useState(null);
+    const [interestRate, setInterestRate] = useState(null);
+    const [loanTerm, setLoanTerm] = useState(null);
+    const [pDisplay, setParaDisplay] = useState(null);
     
     //some new variables to make formula writing easier further
     const monthlyInterestRate = interestRate / 1200;
