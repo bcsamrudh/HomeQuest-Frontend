@@ -12,6 +12,7 @@ import {
   deleteUserSuccess,
   signOutUserStart,
 } from 'src/redux/user/userSlice';
+import { Button } from "@/components/ui/button";
 
 export function UserNav() {
   const router = useRouter();
@@ -47,7 +48,10 @@ export function UserNav() {
           </div>
           <span className="ml-auto text-bold">{currentUser.username}</span>
         </>:
-        <span className="ml-auto">Guest</span>
+        <>
+        <Button className="ml-auto mx-4" onClick={() => router.push("/auth")}>Sign In</Button>
+        <Button className="ml-auto" onClick={() => router.push("/auth")}>Register</Button>
+        </>
         }
         </div>
       </DropdownMenuTrigger>
