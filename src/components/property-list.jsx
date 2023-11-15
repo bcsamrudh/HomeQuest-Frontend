@@ -1,7 +1,8 @@
 'use client'
 import { PlusCircledIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
-import SearchBar from '@/components/searchbar'
+import { Input } from "@/components/ui/input"
+import { MdSearch } from "react-icons/md"
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator"
@@ -48,7 +49,16 @@ function PropertyList(){
         <div className="h-full px-4 py-6 lg:px-8">
         <div className="pb-4">
         <div className="flex space-x-4">
-          <SearchBar />
+          <Input
+            type="text"
+            placeholder="Search Properties"
+            className="w-[300px] border border-regparacolor"
+          />
+          <Button
+            type="submit"
+          >
+            <MdSearch className="text-xl"/>
+          </Button>
           <div className="ml-auto mr-4">
                   <Button onClick={() => navigate.push("/dashboard/add-property")}>
                   <PlusCircledIcon className="mr-2 h-4 w-4" />

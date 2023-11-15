@@ -17,7 +17,6 @@ export function HomesArtwork({
   const add_favorite = async () => {
 
   }
-  console.log(listing?._id)
   const navigate = useRouter();
   return (
     <div className={cn("space-y-3", className)} {...props}>
