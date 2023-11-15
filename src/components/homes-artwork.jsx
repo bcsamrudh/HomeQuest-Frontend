@@ -6,6 +6,7 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
 import { MdLocationOn } from 'react-icons/md';
+import { useRouter } from "next/navigation";
 
 
 export function HomesArtwork({
@@ -16,10 +17,12 @@ export function HomesArtwork({
   const add_favorite = async () => {
 
   }
+  console.log(listing?._id)
+  const navigate = useRouter();
   return (
     <div className={cn("space-y-3", className)} {...props}>
       <ContextMenu>
-        <ContextMenuTrigger className="flex flex-warp gap-4">
+        <ContextMenuTrigger onClick={() =>navigate.push("/dashboard/listings/"+listing?._id)} className="flex flex-warp gap-4">
                 <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
                 <img
                   src={
