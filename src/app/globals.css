@@ -130,3 +130,51 @@
   display: table-cell;
   padding-left: 100px;
 }
+
+
+.area-calculator {
+  margin-top: 50px;
+  display: table;
+  width: 90%;
+}
+
+.area-calculator label {
+  text-align: left;
+  display: block;
+  margin-left: 2px;
+}
+
+.area-form {
+  float: left;
+  width: 300px;
+  margin-left: 100px;
+}
+
+.area-calculator input {
+  width: 100%;
+  padding: 10px 10px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
+.area-calculator button {
+  background: black;
+  color: white;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 120px;
+}
+
+.area-display {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#area-value {
+  font-weight: bold;
+  font-size: 30px;
+}

@@ -13,6 +13,7 @@ import { EmptyPlaceholder } from "@/components/empty-placeholder";
 import MortgageCalculator from "@/components/mortgage-calc";
 import Compare from "@/components/compare";
 import {UserNav} from "@/components/ui/menubar";
+import AreaCalculator from "@/components/area-calculator";
 
 
 export default function HomePage() {
@@ -62,9 +63,9 @@ export default function HomePage() {
                         Compare Properties
                       </Button>
                       <Button variant={activeButton === 4 ? "secondary" : "ghost"}  className="w-full justify-start "
-                      onClick={() => handleButtonClick(4,<EmptyPlaceholder/>)}>
+                      onClick={() => handleButtonClick(4,<AreaCalculator/>)}>
                         <TbRulerMeasure className="mr-2 h-4 w-4" />
-                        Evaluate a Property
+                        Property Area Calculator
                       </Button>
                       <Button variant={activeButton === 5 ? "secondary" : "ghost"}  className="w-full justify-start "
                       onClick={() => handleButtonClick(5,<EmptyPlaceholder/>)}>
