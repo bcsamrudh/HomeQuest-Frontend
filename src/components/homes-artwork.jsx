@@ -68,7 +68,7 @@ export function HomesArtwork({
         </ContextMenuTrigger>
         <ContextMenuContent className="w-40">
           <ContextMenuItem onClick={add_favorite}>Add to Favourites</ContextMenuItem>
-          <ContextMenuItem>Share</ContextMenuItem>
+          <ContextMenuItem>Add to Compare</ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
     </div>

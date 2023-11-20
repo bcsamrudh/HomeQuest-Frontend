@@ -92,7 +92,7 @@ export default function Listing() {
                 <FaChair className='text-lg' />
                 {listing.furnished ? 'Furnished' : 'Unfurnished'}
               </li>
-            </ul>\
+            </ul>
             <p className='flex justify-center items-center mt-2 gap-2 text-slate-600  text-sm'>
               <FaMapMarkerAlt className='text-green-700' />
               {listing.address}
