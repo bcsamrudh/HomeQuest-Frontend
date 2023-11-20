@@ -3,11 +3,6 @@ import 'src/app/globals.css';
 import { useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { Label } from '@/components/ui/label';
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { EmptyPlaceholder } from './empty-placeholder';
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 //the component of this file

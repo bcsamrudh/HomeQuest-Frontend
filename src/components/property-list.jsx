@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator"
 import { ScrollArea,ScrollBar } from "@/components/ui/scroll-area";
 import { HomesArtwork } from "./homes-artwork";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 
 
@@ -15,6 +16,7 @@ function PropertyList(){
   const [RentListings, setRentListings] = useState([]);
   const [SortBy, setSortBy] = useState("");
   const navigate = useRouter();
+  const { currentUser } = useSelector((state) => state.user);
   useEffect(() => {
     const fetchSaleListings = async () => {
       try {
@@ -91,12 +93,14 @@ function PropertyList(){
               <option value="createdAt">Date Created</option>
           </select>
           </div>
+          {currentUser?
           <div className="ml-auto mr-4">
                   <Button onClick={() => navigate.push("/dashboard/add-property")}>
                   <PlusCircledIcon className="mr-2 h-4 w-4" />
                   Add Property
                   </Button>
-          </div>
+          </div>:<></>
+          }
         </div>
         <Separator className="my-4" />
         <div className="relativen space-y-4">
