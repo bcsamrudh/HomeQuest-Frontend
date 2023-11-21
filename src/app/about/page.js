@@ -1,36 +1,43 @@
 'use client'
-import React from 'react';
 import { useEffect, useState } from "react";
-import 'src/app/globals.css';
+import {UserNav} from "@/components/ui/menubar";
+import { Menu } from "@/components/menu"
+import 'src/app/globals.css'
 
-const AboutPage = () => {
-  const [profiles, setProfiles] = useState([])
+const Home = () => {
+    const [profiles, setProfiles] = useState(null)
 
-  useEffect(() => {
-    const fetchProfiles = async () => {
-      const response = await fetch('http://localhost:4000/api/profiles')
-      const json = await response.json()
+    useEffect(() => {
+        const fetchProfiles = async () => {
+            const response = await fetch('http://localhost:4000/api/profiles')
+            const json = await response.json()
 
-      if (response.ok) {
-        setProfiles(json)
-      }
-    }
+            if (response.ok) {
+                setProfiles(json)
+            }
+        }
 
-    fetchProfiles()
-  }, [])
-
-  return (
-    <div>
-      <h2>About Us</h2>
-      <div className="about-page">
-        <div className="details">
-          {profiles && profiles.map((profile) => (
-            <p key={profile._id}>{profile.name}</p>
-          ))}
+        fetchProfiles()
+    }, [])
+    return (
+        <div className="home">
+          <div className="flex h-16 items-center px-4 border-b">
+          <Menu />
+          <div className="ml-auto flex items-center space-x-4">
+              <UserNav />
+          </div>
+          </div>
+            <div className="profile-details-container">
+               {profiles && profiles.map((profile) => (
+                 <div className="profile-details" key={profile._id}>
+                 <h4 className='profile-details-heading'>{profile.name}</h4>
+                 <p className='profile-details-p1'>{profile.srn}</p>
+                 <p className='profile-details-p2'>{profile.contribution}</p>
+                 </div>
+               ))}
+            </div>
         </div>
-      </div>
-    </div>
-  )
+    )
 }
 
-export default AboutPage;
+export default Home;

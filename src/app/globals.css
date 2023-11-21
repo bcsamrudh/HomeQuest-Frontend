@@ -210,3 +210,36 @@
   font-weight: bold;
   font-size: 20px;
 }
+
+.profile-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 0.2%;
+  margin-top: 5%;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  border: 2px solid #000;
+  padding: 10px 20px 20px 20px;
+  border-radius: 15px;
+  width: 200px;
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+.profile-details-heading {
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+.profile-details-p1,
+.profile-details-p2 {
+  margin-bottom: 10px;
+}
