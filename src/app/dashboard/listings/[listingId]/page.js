@@ -65,7 +65,7 @@ export default function Listing() {
               {listing.name}
           </p>
           <p className='text-2xl text-center font-semibold'>
-              ${' '}
+              ₹{' '}
               {listing.offer
                 ? listing.discountPrice.toLocaleString('en-US')
                 : listing.regularPrice.toLocaleString('en-US')}

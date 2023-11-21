@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator"
-import { ScrollArea,ScrollBar } from "@/components/ui/scroll-area";
 import { HomesArtwork } from "./homes-artwork";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
@@ -105,7 +104,6 @@ function PropertyList(){
         <Separator className="my-4" />
         <div className="relativen space-y-4">
                 <label className="text-2xl font-bold mb-4">For Sale</label>
-                        <ScrollArea>
                           <div className="flex flex-wrap gap-4 mb-4">
                             {SaleListings.map((listing) => (
                               <HomesArtwork
@@ -115,10 +113,7 @@ function PropertyList(){
                               />
                             ))}
                           </div>
-                          <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
                         <label className="text-2xl font-bold mb-4">For Rent</label>
-                        <ScrollArea>
                           <div className="flex flex-wrap gap-4 pb-4">
                             {RentListings.map((listing) => (
                               <HomesArtwork
@@ -128,8 +123,6 @@ function PropertyList(){
                               />
                             ))}
                           </div>
-                          <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
         </div>
         </div>
         </div>
