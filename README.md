@@ -168,3 +168,9 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+**Teammates**
+
+1. [Adya Bhat](https://github.com/adyabhat)
+2. Aditya G H
+
