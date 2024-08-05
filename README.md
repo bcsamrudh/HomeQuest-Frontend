@@ -1,4 +1,3 @@
-
 <a name="readme-top"></a>
 
 
@@ -172,4 +171,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 **Teamates**
 
 1. [Adya Bhat](https://github.com/adyabhat)
+2. [Aditya GH](https://github.com/adityagh006)
+
 
