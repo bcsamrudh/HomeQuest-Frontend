@@ -15,6 +15,12 @@
 </div>
 
 
+**Teamates**
+
+1. [Adya Bhat](https://github.com/adyabhat)
+2. [Aditya GH](https://github.com/adityagh006)
+
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -168,9 +174,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Teamates**
 
-1. [Adya Bhat](https://github.com/adyabhat)
-2. [Aditya GH](https://github.com/adityagh006)
 
 
