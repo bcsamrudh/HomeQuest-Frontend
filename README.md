@@ -45,8 +45,6 @@
 <!-- ABOUT THE PROJECT -->
 # About The Project
 
-**Project is still in development**
-
 **Warning**
 <br/>
 You also need to setup the Server for the project to be Functional: **https://github.com/bcsamrudh/HomeQuest-backend**
