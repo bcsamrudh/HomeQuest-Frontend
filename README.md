@@ -17,8 +17,7 @@
 
 **Teamates**
 
-1. [Adya Bhat](https://github.com/adyabhat)
-2. [Aditya GH](https://github.com/adityagh006)
+1. [Aditya GH](https://github.com/adityagh006)
 
 
 
